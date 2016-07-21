@@ -108,7 +108,6 @@ public class JTableForm extends javax.swing.JFrame {
         registros[1] = "apellido";
         registros[2] = "34";
         dtm.addRow(registros);
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
