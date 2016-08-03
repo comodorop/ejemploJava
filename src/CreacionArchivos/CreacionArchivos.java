@@ -12,6 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,24 +21,16 @@ import javax.swing.JOptionPane;
  */
 public class CreacionArchivos {
 
-    private void leerArchivo(String archivo) throws FileNotFoundException, IOException {
-        String cadena;
+    private ArrayList<String> leerArchivo(String archivo) throws FileNotFoundException, IOException {
+        ArrayList<String> lst = new ArrayList<>();
         FileReader f = new FileReader(archivo);
         BufferedReader b = new BufferedReader(f);
         String info = "";
-        while ((cadena = b.readLine()) != null) {
-            info = cadena;
-            System.out.println(cadena);
+        while ((info = b.readLine()) != null) {
+            lst.add(info);
         }
         b.close();
-        info = info.replaceAll("\\\\", "/");
-        String[] informacion = info.split("/");
-        String empresa = informacion[(informacion.length - 1)];
-        String[] numEmpresa = empresa.split("\\.");
-        int logitud = numEmpresa[0].length();
-        String numeroEmpresa = "";
-        numeroEmpresa += numEmpresa[0].charAt(logitud - 2);
-        numeroEmpresa += numEmpresa[0].charAt(logitud - 1);
+        return lst;
     }
 
     public void generarConfiguracion() {
